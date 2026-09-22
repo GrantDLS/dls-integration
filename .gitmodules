@@ -1,0 +1,3 @@
+[submodule "user-office-core"]
+	path = user-office-core
+	url = git@github.com:UserOfficeProject/user-office-core.git

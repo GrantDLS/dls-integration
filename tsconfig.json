@@ -1,0 +1,18 @@
+{
+  "extends": "./user-office-core/apps/backend/tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "jest"],
+    "paths": {
+      "@core/*": ["./user-office-core/apps/backend/src/*"],
+      "@dls/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "user-office-core/apps/backend/src/customTypes/index.d.ts"
+  ],
+  "exclude": [
+    "user-office-core/apps/backend/src/**/*.spec.ts",
+    "user-office-core/apps/backend/src/**/*.test.ts"
+  ]
+}
