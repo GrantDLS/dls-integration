@@ -1,0 +1,56 @@
+name: DLS integration CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+      - staging
+
+env:
+  NODE_VERSION: 22.x
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out DLS integration repository
+        uses: actions/checkout@v6
+
+      - name: Initialise core submodule
+        run: |
+          git submodule update --init --recursive
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            user-office-core/apps/backend/package-lock.json
+
+      - name: Install DLS dependencies
+        run: npm ci
+
+      - name: Install core backend dependencies
+        run: npm ci
+        working-directory: user-office-core/apps/backend
+
+      - name: Run DLS tests
+        run: npm test -- --runInBand
+
+      - name: Type-check DLS integration
+        run: npm run typecheck
+
+      - name: Type-check core backend
+        run: npm run tsc -- --noEmit
+        working-directory: user-office-core/apps/backend
+
+      - name: Build core backend
+        run: npm run build
+        working-directory: user-office-core/apps/backend

@@ -1,0 +1,10 @@
+.git
+.github
+node_modules
+user-office-core/.git
+user-office-core/**/node_modules
+user-office-core/**/build
+user-office-core/**/.env
+**/.env
+coverage
+dist
