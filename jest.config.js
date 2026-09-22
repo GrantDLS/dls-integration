@@ -5,7 +5,6 @@ module.exports = {
   },
   moduleNameMapper: {
     '^@core/(.*)$': '<rootDir>/user-office-core/apps/backend/src/$1',
-    '^@dls/(.*)$': '<rootDir>/src/$1',
     '^tsyringe$': '<rootDir>/node_modules/tsyringe',
   },
   testEnvironment: 'node',

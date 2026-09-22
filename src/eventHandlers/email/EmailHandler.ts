@@ -1,5 +1,5 @@
-import { proposalCoProposerInvitesUpdatedHandler } from '@dls/eventHandlers/email/proposalCoProposerInvitesUpdatedHandler';
-import { proposalSubmittedHandler } from '@dls/eventHandlers/email/proposalSubmittedHandler';
+import { proposalCoProposerInvitesUpdatedHandler } from './proposalCoProposerInvitesUpdatedHandler';
+import { proposalSubmittedHandler } from './proposalSubmittedHandler';
 import { ApplicationEvent } from '@core/events/applicationEvents';
 import { Event } from '@core/events/event.enum';
 
@@ -22,6 +22,5 @@ export async function EmailHandler(event: ApplicationEvent) {
 
   return;
 }
-
 
 

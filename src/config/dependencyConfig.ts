@@ -2,11 +2,11 @@ import { ConsoleLogger, setLogger } from '@user-office-software/duo-logger';
 
 import 'reflect-metadata';
 import { getSecondsFromAllocationTimeUnits } from '@core/config/base/allocationTimeUnitConverter';
-import { configureEnvironment } from '@dls/config/configureEnvironment';
+import { configureEnvironment } from './configureEnvironment';
 import { Tokens } from '@core/config/Tokens';
 import { mapClass, mapValue } from '@core/config/utils';
 import { DataAccessUsersAuthorization } from '@core/auth/DataAccessUsersAuthorization';
-import { UserAuthorization } from '@dls/auth/UserAuthorization';
+import { UserAuthorization } from '../auth/UserAuthorization';
 import { ProposalAuthorization } from '@core/auth/ProposalAuthorization';
 import { VisitAuthorization } from '@core/auth/VisitAuthorization';
 import { VisitRegistrationAuthorization } from '@core/auth/VisitRegistrationAuthorization';
@@ -48,7 +48,7 @@ import PostgresUserDataSource from '@core/datasources/postgres/UserDataSource';
 import PostgresVisitDataSource from '@core/datasources/postgres/VisitDataSource';
 import PostgresVisitRegistrationClaimDataSource from '@core/datasources/postgres/VisitRegistrationClaimDataSource';
 import PostgresWorkflowDataSource from '@core/datasources/postgres/WorkflowDataSource';
-import { EmailHandler } from '@dls/eventHandlers/email/EmailHandler';
+import { EmailHandler } from '../eventHandlers/email/EmailHandler';
 import createLoggingHandler from '@core/eventHandlers/logging';
 import { SMTPMailService } from '@core/eventHandlers/MailService/SMTP/SMTPMailService';
 import {
@@ -59,12 +59,12 @@ import { createApplicationEventBus } from '@core/events';
 import {
   CallExtraFapDataColumns,
   FapDataColumns,
-} from '@dls/factory/xlsx/FapDataColumns';
+} from '../factory/xlsx/FapDataColumns';
 import {
   callFapPopulateRow,
   getDataRow,
   populateRow,
-} from '@dls/factory/xlsx/FapDataRow';
+} from '../factory/xlsx/FapDataRow';
 import BasicUserDetailsLoader from '@core/loaders/BasicUserDetailsLoader';
 import { SkipAssetRegistrar } from '@core/services/assetRegistrar/skip/SkipAssetRegistrar';
 
@@ -151,5 +151,4 @@ mapValue(Tokens.ConfigureLogger, () => setLogger(new ConsoleLogger()));
 
 mapClass(Tokens.BasicUserDetailsLoader, BasicUserDetailsLoader);
 mapValue(Tokens.ConvertAllocationTimeUnits, getSecondsFromAllocationTimeUnits);
-
 

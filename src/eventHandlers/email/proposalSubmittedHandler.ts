@@ -1,7 +1,7 @@
 import { logger } from '@user-office-software/duo-logger';
 import { container } from 'tsyringe';
 
-import { getBaseURL } from '@dls/config/configureEnvironment';
+import { getBaseURL } from '../../config/configureEnvironment';
 import { Tokens } from '@core/config/Tokens';
 import { CallDataSource } from '@core/datasources/CallDataSource';
 import { EmailTemplateDataSource } from '@core/datasources/EmailTemplateDataSource';
@@ -229,6 +229,5 @@ export async function proposalSubmittedHandler(event: ApplicationEvent) {
 
   return;
 }
-
 
 

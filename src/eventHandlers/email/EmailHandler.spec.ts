@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import 'reflect-metadata';
 import { container } from 'tsyringe';
 
-import { EmailHandler } from '@dls/eventHandlers/email/EmailHandler';
+import { EmailHandler } from './EmailHandler';
 import { Tokens } from '@core/config/Tokens';
 import { GetInvitesFilter } from '@core/datasources/InviteDataSource';
 import { CallDataSourceMock } from '@core/datasources/mockups/CallDataSource';
@@ -117,6 +117,5 @@ describe('EmailHandler', () => {
     }
   );
 });
-
 
 
